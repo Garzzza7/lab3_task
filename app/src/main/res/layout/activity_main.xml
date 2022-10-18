@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="A ="
-            android:inputType="number"
-            android:minHeight="48dp"/>
+            android:inputType="numberDecimal"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/Binput"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="B ="
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"/>
 
         <EditText
@@ -46,21 +46,34 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="C ="
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Results"
+            android:hint="Results 1"
             android:minHeight="48dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Result 2"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Calculate" />
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear" />
 
     </LinearLayout>
 
