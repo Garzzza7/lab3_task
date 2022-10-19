@@ -45,18 +45,18 @@ class MainActivity : AppCompatActivity() {
                 var root2: Double
 
                 var dicriminant = valb*valb-4*vala*valc
-                val realPart = -valb / (2 * vala)
+                val realPart = -(-valb / (2 * vala))
                 val imaginaryPart = Math.sqrt((-dicriminant)) / (2 * vala)
 
 
                 if(dicriminant>0.0){
-                    root1= ((-valb + Math.sqrt(dicriminant))/(2*vala));
-                    root2= ((-valb - Math.sqrt(dicriminant))/(2*vala));
+                    root1= -((-valb + Math.sqrt(dicriminant))/(2*vala));
+                    root2= -((-valb - Math.sqrt(dicriminant))/(2*vala));
                     result1.setText(root1.toString())
                     result2.setText(root2.toString())
                 }
                 else if(dicriminant==0.0){
-                    root1 = ((-valb/(2*vala)))
+                    root1 = -((-valb/(2*vala)))
                     result1.setText("Only one solution: "+root1.toString())
                     result2.setText("/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\")
 
