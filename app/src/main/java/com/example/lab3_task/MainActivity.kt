@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val result1 = findViewById<TextView>(R.id.textView2)
         val result2 = findViewById<TextView>(R.id.textView3)
+        val delta=findViewById<TextView>(R.id.delta_view)
 
         clearButton.setOnClickListener{
             A.setText("")
@@ -31,44 +32,64 @@ class MainActivity : AppCompatActivity() {
             C.setText("")
             result1.setText("")
             result2.setText("")
+            delta.setText("")
         }
 
         button.setOnClickListener{
-            var vala = A.text.toString().toDouble()
-            if(vala==0.0){
-                result1.setText("It is a linear equation")
-                result2.setText("A cannot be 0!!!")
-            } else {
-                var valb = B.text.toString().toDouble()
-                var valc = C.text.toString().toDouble()
-                var root1: Double
-                var root2: Double
+            try {
+                var vala = A.text.toString().toDouble()
+                if(vala==0.0){
+                    result1.setText("It is a linear equation")
+                    result2.setText("A cannot be 0!!!")
+                    delta.setText(" ")
+                } else {
+                    var valb = B.text.toString().toDouble()
+                    var valc = C.text.toString().toDouble()
+                    var root1: Double
+                    var root2: Double
 
-                var dicriminant = valb*valb-4*vala*valc
-                val realPart = -(-valb / (2 * vala))
-                val imaginaryPart = Math.sqrt((-dicriminant)) / (2 * vala)
+                    var dicriminant = valb*valb-4*vala*valc
+                    val realPart = -(-valb / (2 * vala))
+                    val imaginaryPart = Math.sqrt((-dicriminant)) / (2 * vala)
 
 
-                if(dicriminant>0.0){
-                    root1= -((-valb + Math.sqrt(dicriminant))/(2*vala));
-                    root2= -((-valb - Math.sqrt(dicriminant))/(2*vala));
-                    result1.setText(root1.toString())
-                    result2.setText(root2.toString())
+                    if(dicriminant>0.0){
+                        root1= -((-valb + Math.sqrt(dicriminant))/(2*vala));
+                        root2= -((-valb - Math.sqrt(dicriminant))/(2*vala));
+                        result1.setText(root1.toString())
+                        result2.setText(root2.toString())
+                        delta.setText("Delta= "+dicriminant.toString())
+                    }
+                    else if(dicriminant==0.0){
+                        root1 = -((-valb/(2*vala)))
+                        result1.setText("Only one solution: "+root1.toString())
+                        result2.setText("/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\")
+                        delta.setText("Delta= "+dicriminant.toString())
+
+                    }
+                    else if(dicriminant<0.0){
+                        result1.setText("Delta is less than 0")
+                        result2.setText("No real solutions")
+                        delta.setText("Delta= "+dicriminant.toString())
+                        /*
+                        result1.setText(realPart.toString()+"+"+imaginaryPart.toString()+"i")
+                        result2.setText(realPart.toString()+"-"+imaginaryPart.toString()+"i")
+                        delta.setText("Delta= "+dicriminant.toString())
+
+                         */
+                    }
                 }
-                else if(dicriminant==0.0){
-                    root1 = -((-valb/(2*vala)))
-                    result1.setText("Only one solution: "+root1.toString())
-                    result2.setText("/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\")
 
-                }
-                else if(dicriminant<0.0){
-                    result1.setText(realPart.toString()+"+"+imaginaryPart.toString()+"i")
-                    result2.setText(realPart.toString()+"-"+imaginaryPart.toString()+"i")
-                }
+            } catch (e: Exception){
+                result1.setText(e.message)
+                result1.setText("")
             }
+
+
 
         }
     }
 }
+
 
 
